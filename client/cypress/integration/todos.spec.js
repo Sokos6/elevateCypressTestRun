@@ -17,9 +17,8 @@ describe('todo app', () => {
 
     it('should display the todo list', () => {
         // network stubs
-        cy.server();
-        cy.route('GET', `${serverUrl}/todos`, '@updatedJSON').as('getAllTodos');
-        cy.route('POST', `${serverUrl}/todos`, '@addTodoJSON').as('addTodo');
+       cy.get('li').its('length').should('eq', 3);
+       cy.get('li').eq(0).contains('go for a walk');
     });
 
     it('should add a new todo to the list', () => {});
